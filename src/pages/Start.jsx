@@ -210,15 +210,15 @@ export default function Start() {
     setLoading(true);
     try {
       const email = registeredEmail.trim().toLowerCase();
-      // Verify OTP and complete registration in parallel
-      const [, regResult] = await Promise.all([
-        base44.auth.verifyOtp({ email, otpCode }),
-        base44.functions.invoke("registerWithOtp", {
-          ...buildRegistrationPayload(),
-          email,
-          complete_registration: true
-        })
-      ]);
+      const verifyResult = await base44.functions.invoke("verifyRegistrationOtp", { email, code: otpCode });
+      if (!verifyResult.data?.success) {
+        throw new Error(verifyResult.data?.error || "Invalid verification code.");
+      }
+      const regResult = await base44.functions.invoke("registerWithOtp", {
+        ...buildRegistrationPayload(),
+        email,
+        complete_registration: true
+      });
       if (!regResult.data?.success) {
         throw new Error(regResult.data?.error || "Failed to complete registration.");
       }
