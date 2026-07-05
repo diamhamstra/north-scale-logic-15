@@ -211,13 +211,7 @@ export default function CompleteProfile() {
     setError("");
     setUploadingPassport(true);
     try {
-      const reader = new FileReader();
-      const dataUrl = await new Promise((resolve, reject) => {
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-      });
-      const upload = await base44.integrations.Core.UploadFile({ file: dataUrl });
+      const upload = await base44.integrations.Core.UploadFile({ file });
       if (!upload?.file_url) throw new Error("Upload failed.");
       const updated = await saveProfile({
         passport_url: upload.file_url,

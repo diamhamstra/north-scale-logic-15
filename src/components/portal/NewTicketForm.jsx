@@ -29,18 +29,12 @@ export default function NewTicketForm({ userId, onBack, onSuccess }) {
     setUploading(true);
     try {
       const uploadPromises = files.map(async (file) => {
-        const reader = new FileReader();
-        return new Promise((resolve) => {
-          reader.onload = async (event) => {
-            try {
-              const result = await base44.integrations.Core.UploadFile({ file: event.target.result });
-              resolve({ url: result.file_url, name: file.name });
-            } catch (err) {
-              resolve(null);
-            }
-          };
-          reader.readAsDataURL(file);
-        });
+        try {
+          const result = await base44.integrations.Core.UploadFile({ file });
+          return { url: result.file_url, name: file.name };
+        } catch (err) {
+          return null;
+        }
       });
       const results = await Promise.all(uploadPromises);
       const validUrls = results.filter(r => r !== null);
