@@ -140,7 +140,6 @@ Deno.serve(async (req) => {
     if (!user) {
       step = 'auth_register';
       try {
-        // auth.register() sends the platform's native OTP email — this is the sole verification email
         await base44.auth.register({ email: normalizedEmail, password });
       } catch (registerErr) {
         const msg = String(registerErr.message || registerErr).toLowerCase();
@@ -160,6 +159,19 @@ Deno.serve(async (req) => {
         return Response.json({
           success: false,
           error: `step:${step} — user not found after auth.register(). Try again in a moment.`,
+        });
+      }
+
+      step = 'send_otp';
+      // Send our own branded, trackable verification code — this is the code
+      // verifyRegistrationOtp checks, and the same one the "resend" button re-sends.
+      // Relying on the platform's native auth.register() email here caused a mismatch:
+      // that email carries a different code than what verification (and any resend) checks.
+      const otpResult = await base44.functions.invoke('sendRegistrationOtp', { email: normalizedEmail });
+      if (!otpResult.data?.success) {
+        return Response.json({
+          success: false,
+          error: otpResult.data?.error || 'Could not send verification code. Please try again.',
         });
       }
     }
