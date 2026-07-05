@@ -1,0 +1,58 @@
+{
+  "name": "Partner",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "partner_type": {
+      "type": "string",
+      "enum": [
+        "broker",
+        "technology",
+        "legal",
+        "compliance",
+        "marketing",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "prospect",
+        "former"
+      ],
+      "default": "prospect"
+    },
+    "primary_contact_name": {
+      "type": "string"
+    },
+    "primary_contact_email": {
+      "type": "string"
+    },
+    "primary_contact_phone": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "referral_link": {
+      "type": "string"
+    },
+    "commission_agreement": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "partner_type"
+  ]
+}

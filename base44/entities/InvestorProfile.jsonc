@@ -1,0 +1,230 @@
+{
+  "name": "InvestorProfile",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Reference to the User entity"
+    },
+    "account_id": {
+      "type": "string",
+      "description": "Unique north scale account ID (NS-XXXXXX) for the investor"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "referred_by": {
+      "type": "string"
+    },
+    "access_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending",
+      "description": "Admin approval status for portal access"
+    },
+    "access_notes": {
+      "type": "string",
+      "description": "Admin notes on approval/rejection"
+    },
+    "profile_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "phone": {
+      "type": "string"
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "income_tax_country": {
+      "type": "string"
+    },
+    "net_worth": {
+      "type": "string",
+      "enum": [
+        "under_100k",
+        "100k_500k",
+        "500k_1m",
+        "1m_5m",
+        "5m_plus"
+      ]
+    },
+    "monthly_investment": {
+      "type": "string",
+      "enum": [
+        "25k_50k",
+        "50k_100k",
+        "100k_250k",
+        "250k_500k",
+        "500k_plus"
+      ]
+    },
+    "investment_experience": {
+      "type": "string",
+      "enum": [
+        "none",
+        "1_3_years",
+        "3_5_years",
+        "5_10_years",
+        "10_plus_years"
+      ]
+    },
+    "waiver_name": {
+      "type": "string"
+    },
+    "onboarding_stage": {
+      "type": "string",
+      "enum": [
+        "profile",
+        "agreements",
+        "passport",
+        "complete"
+      ],
+      "default": "profile",
+      "description": "Current mandatory onboarding stage"
+    },
+    "agreements_signed": {
+      "type": "object",
+      "description": "Map of agreement key to signature record JSON string"
+    },
+    "waiver_url": {
+      "type": "string",
+      "description": "URL of the signed Liability Waiver document"
+    },
+    "passport_url": {
+      "type": "string",
+      "description": "Uploaded passport/ID file URL"
+    },
+    "passport_status": {
+      "type": "string",
+      "enum": [
+        "not_uploaded",
+        "pending_review",
+        "approved"
+      ],
+      "default": "not_uploaded"
+    },
+    "selected_engine": {
+      "type": "string",
+      "enum": [
+        "digital",
+        "commodities",
+        "equities"
+      ],
+      "description": "Engine the investor has begun setup for"
+    },
+    "onboarding_step": {
+      "type": "number",
+      "default": 0
+    },
+    "step_1_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_2_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_3_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_4_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_5_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "commodities_metacopier_email": {
+      "type": "string"
+    },
+    "commodities_metacopier_id": {
+      "type": "string"
+    },
+    "digital_metacopier_email": {
+      "type": "string"
+    },
+    "digital_metacopier_id": {
+      "type": "string"
+    },
+    "equities_metacopier_email": {
+      "type": "string"
+    },
+    "equities_metacopier_id": {
+      "type": "string"
+    },
+    "notification_prefs": {
+      "type": "string",
+      "description": "JSON string of notification preference toggles"
+    },
+    "two_fa_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether 2FA is enabled for this investor account"
+    },
+    "two_fa_prompt_shown": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the first-login 2FA prompt has been shown"
+    }
+  },
+  "required": [
+    "user_id",
+    "email"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

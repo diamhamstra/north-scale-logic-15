@@ -1,0 +1,37 @@
+{
+  "name": "SupportArticle",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Getting Started",
+        "Complete Your Profile",
+        "Identity Verification",
+        "Research Engines",
+        "Performance",
+        "Funding",
+        "Withdrawals",
+        "Documents",
+        "Security",
+        "Frequently Asked Questions"
+      ]
+    },
+    "content": {
+      "type": "string",
+      "description": "Article content in markdown"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "title",
+    "category",
+    "content"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "PerformanceSnapshot",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "engine": {
+      "type": "string",
+      "enum": [
+        "commodities",
+        "digital",
+        "equities"
+      ]
+    },
+    "metacopier_id": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "number"
+    },
+    "equity": {
+      "type": "number"
+    },
+    "open_pl": {
+      "type": "number"
+    },
+    "closed_pl": {
+      "type": "number"
+    },
+    "total_return": {
+      "type": "number"
+    },
+    "monthly_return": {
+      "type": "number"
+    },
+    "max_drawdown": {
+      "type": "number"
+    },
+    "win_rate": {
+      "type": "number"
+    },
+    "profit_factor": {
+      "type": "number"
+    },
+    "equity_curve_json": {
+      "type": "string",
+      "description": "JSON array of {date, balance, equity}"
+    },
+    "monthly_returns_json": {
+      "type": "string",
+      "description": "JSON array of {month, return}"
+    },
+    "snapshot_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "is_placeholder": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_id",
+    "engine",
+    "snapshot_date"
+  ]
+}

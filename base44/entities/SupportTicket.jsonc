@@ -1,0 +1,99 @@
+{
+  "name": "SupportTicket",
+  "type": "object",
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "description": "Auto-generated ticket ID (e.g., NS-000241)"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Investor user ID"
+    },
+    "investor_name": {
+      "type": "string"
+    },
+    "investor_email": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Platform Issue",
+        "Account Access",
+        "Verification",
+        "Research Engines",
+        "Performance Questions",
+        "Funding",
+        "Withdrawals",
+        "Technical Issue",
+        "Bug Report",
+        "Feature Request",
+        "General Question",
+        "Other"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ],
+      "default": "Medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "IN REVIEW",
+        "WAITING FOR CLIENT",
+        "RESOLVED",
+        "CLOSED"
+      ],
+      "default": "OPEN"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Admin user ID assigned to ticket"
+    },
+    "assigned_name": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string",
+      "description": "Initial ticket message"
+    },
+    "attachment_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of file URLs"
+    },
+    "last_message_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "closed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "ticket_id",
+    "user_id",
+    "subject",
+    "category",
+    "priority",
+    "message"
+  ]
+}

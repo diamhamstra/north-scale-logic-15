@@ -1,0 +1,133 @@
+{
+  "name": "Inquiry",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "inquiry_type": {
+      "type": "string",
+      "enum": [
+        "prospective_investor",
+        "family_office",
+        "institutional_investor",
+        "investment_consultant",
+        "quant_trader",
+        "portfolio_manager",
+        "broker_partnership",
+        "technology_partnership",
+        "liquidity_provider",
+        "media",
+        "general",
+        "other"
+      ]
+    },
+    "research_engine": {
+      "type": "string"
+    },
+    "allocation_size": {
+      "type": "string"
+    },
+    "accredited_status": {
+      "type": "string"
+    },
+    "trading_experience": {
+      "type": "string"
+    },
+    "primary_market": {
+      "type": "string"
+    },
+    "assets_managed": {
+      "type": "string"
+    },
+    "linkedin_profile": {
+      "type": "string"
+    },
+    "strategy_description": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "partnership_type": {
+      "type": "string"
+    },
+    "partnership_proposal": {
+      "type": "string"
+    },
+    "tech_category": {
+      "type": "string"
+    },
+    "markets_covered": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "consent_info": {
+      "type": "boolean"
+    },
+    "consent_terms": {
+      "type": "boolean"
+    },
+    "priority_tag": {
+      "type": "string",
+      "enum": [
+        "high_priority_investor",
+        "institutional",
+        "family_office",
+        "trader_candidate",
+        "broker_partner",
+        "technology_partner",
+        "general"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "under_review",
+        "contacted",
+        "closed"
+      ],
+      "default": "under_review"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "inquiry_type"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

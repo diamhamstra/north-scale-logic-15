@@ -1,0 +1,83 @@
+{
+  "name": "JobApplication",
+  "type": "object",
+  "properties": {
+    "application_id": {
+      "type": "string",
+      "description": "Auto-generated application ID (e.g., APP-2026-001)"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "linkedin_url": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string",
+      "enum": [
+        "Quantitative Trader",
+        "Financial Accountant"
+      ]
+    },
+    "cv_url": {
+      "type": "string"
+    },
+    "cover_letter": {
+      "type": "string"
+    },
+    "additional_info": {
+      "type": "string"
+    },
+    "consent_given": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Applied",
+        "Under Review",
+        "Interview",
+        "Assessment",
+        "Offer",
+        "Rejected",
+        "Hired"
+      ],
+      "default": "Applied"
+    },
+    "assigned_admin": {
+      "type": "string"
+    },
+    "admin_notes": {
+      "type": "string"
+    },
+    "interview_scheduled": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "application_id",
+    "first_name",
+    "last_name",
+    "email",
+    "position",
+    "cv_url",
+    "consent_given"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "SupportMessage",
+  "type": "object",
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "description": "Reference to SupportTicket"
+    },
+    "sender_type": {
+      "type": "string",
+      "enum": [
+        "investor",
+        "admin"
+      ],
+      "description": "Who sent the message"
+    },
+    "sender_id": {
+      "type": "string",
+      "description": "User ID of sender"
+    },
+    "sender_name": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "attachment_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of file URLs"
+    },
+    "is_internal_note": {
+      "type": "boolean",
+      "default": false,
+      "description": "Internal notes visible only to admins"
+    }
+  },
+  "required": [
+    "ticket_id",
+    "sender_type",
+    "sender_id",
+    "message"
+  ]
+}

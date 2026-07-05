@@ -1,0 +1,42 @@
+{
+  "name": "OtpCode",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "2fa_login",
+        "registration"
+      ],
+      "default": "2fa_login"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "used": {
+      "type": "boolean",
+      "default": false
+    },
+    "attempt_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Failed verification attempts for rate limiting"
+    }
+  },
+  "required": [
+    "user_id",
+    "email",
+    "code",
+    "expires_at"
+  ]
+}

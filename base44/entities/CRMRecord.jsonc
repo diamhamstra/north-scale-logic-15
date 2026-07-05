@@ -1,0 +1,72 @@
+{
+  "name": "CRMRecord",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "referred_by": {
+      "type": "string"
+    },
+    "lead_source": {
+      "type": "string",
+      "enum": [
+        "website_inquiry",
+        "portal_registration",
+        "direct",
+        "referral",
+        "other"
+      ]
+    },
+    "client_status": {
+      "type": "string",
+      "enum": [
+        "lead",
+        "pending",
+        "approved",
+        "active",
+        "inactive",
+        "rejected"
+      ],
+      "default": "lead"
+    },
+    "assigned_admin": {
+      "type": "string"
+    },
+    "registration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "approval_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "engine": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "inquiry_id": {
+      "type": "string",
+      "description": "Link to Inquiry if sourced from website"
+    },
+    "profile_id": {
+      "type": "string",
+      "description": "Link to InvestorProfile"
+    }
+  },
+  "required": [
+    "email",
+    "lead_source"
+  ]
+}

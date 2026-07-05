@@ -1,0 +1,78 @@
+{
+  "name": "ComplianceControls",
+  "type": "object",
+  "properties": {
+    "control_key": {
+      "type": "string",
+      "description": "Unique control identifier (e.g. AUTH_MFA)"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "AUTHENTICATION",
+        "ACCESS_CONTROL",
+        "DATA_PROTECTION",
+        "AUDIT_AND_ACCOUNTABILITY",
+        "APPLICATION_SECURITY",
+        "OPERATIONAL_RESILIENCE",
+        "THIRD_PARTY_VENDOR_RISK"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "implemented",
+        "needs_review",
+        "verified"
+      ],
+      "default": "planned"
+    },
+    "mapped_frameworks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ISO27001",
+          "SOC2_TYPE_II",
+          "PCI_DSS",
+          "DORA",
+          "NIS2"
+        ]
+      }
+    },
+    "evidence_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "evidence_url": {
+      "type": "string"
+    },
+    "evidence_note": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "last_reviewed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_review_at": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "control_key",
+    "title",
+    "category",
+    "status"
+  ]
+}

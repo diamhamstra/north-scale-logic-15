@@ -1,0 +1,31 @@
+{
+  "name": "SystemStatus",
+  "type": "object",
+  "properties": {
+    "service_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Operational",
+        "Investigating",
+        "Maintenance",
+        "Partial Outage",
+        "Resolved"
+      ],
+      "default": "Operational"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status_message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "service_name",
+    "status"
+  ]
+}

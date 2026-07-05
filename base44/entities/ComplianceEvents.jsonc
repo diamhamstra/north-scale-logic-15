@@ -1,0 +1,26 @@
+{
+  "name": "ComplianceEvents",
+  "type": "object",
+  "properties": {
+    "event_type": {
+      "type": "string"
+    },
+    "actor_user_id": {
+      "type": "string"
+    },
+    "affected_user_id": {
+      "type": "string"
+    },
+    "control_key": {
+      "type": "string"
+    },
+    "metadata_json": {
+      "type": "string",
+      "description": "JSON string of additional event metadata"
+    }
+  },
+  "required": [
+    "event_type",
+    "actor_user_id"
+  ]
+}

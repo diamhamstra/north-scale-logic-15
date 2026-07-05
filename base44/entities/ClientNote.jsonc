@@ -1,0 +1,40 @@
+{
+  "name": "ClientNote",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      "description": "CRMRecord or InvestorProfile ID"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "The investor's user_id"
+    },
+    "author_id": {
+      "type": "string",
+      "description": "Admin user ID who wrote the note"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "general",
+        "compliance",
+        "onboarding",
+        "investment",
+        "support",
+        "call"
+      ]
+    },
+    "content": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "content",
+    "author_id"
+  ]
+}

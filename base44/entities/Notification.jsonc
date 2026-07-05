@@ -1,0 +1,57 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Target user ID"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Account",
+        "Documents",
+        "Performance",
+        "Research Engines",
+        "Security",
+        "System"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    },
+    "action_label": {
+      "type": "string",
+      "description": "Optional CTA button label"
+    },
+    "action_url": {
+      "type": "string",
+      "description": "Optional destination URL"
+    },
+    "is_action_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sent_by_admin": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_id",
+    "category",
+    "title",
+    "message"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "default": "user"
+    },
+    "password": {
+      "type": "string",
+      "description": "Hashed password for custom auth"
+    },
+    "two_fa_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether 2FA is enabled for this admin account"
+    }
+  }
+}

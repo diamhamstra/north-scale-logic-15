@@ -1,0 +1,38 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "Admin or system that triggered the action"
+    },
+    "action": {
+      "type": "string",
+      "description": "e.g. PROFILE_COMPLETED, AGREEMENT_SIGNED, ENGINE_ACTIVATED"
+    },
+    "object_type": {
+      "type": "string",
+      "description": "e.g. InvestorProfile, Agreement, Engine"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "object_label": {
+      "type": "string",
+      "description": "Human-readable label for the object"
+    },
+    "metadata_json": {
+      "type": "string",
+      "description": "JSON string of additional context"
+    },
+    "ip_address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "action"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "ComplianceEvidence",
+  "type": "object",
+  "properties": {
+    "control_key": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "type": "string",
+      "enum": [
+        "screenshot",
+        "document",
+        "policy",
+        "procedure",
+        "log",
+        "configuration",
+        "other"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "control_key",
+    "evidence_type",
+    "title",
+    "created_by"
+  ]
+}
